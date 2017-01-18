@@ -1,3 +1,19 @@
 <template>
   <h1>${message}</h1>
+  <h2>${heading}</h2>
+
+  <form submit.trigger="addTodo()">
+    <input type="text" value.bind="todoDesc"/>
+    <button type="submit">Add Todo</button>
+  </form>
+
+  <div>${todoDesc}</div>
+
+  <ul>
+    <li repeat.for="todo of todoList">
+      <input type="checkbox" checked.bind="todo.done" />
+      <span css="text-decoration: ${todo.done ? 'line-through' : 'none'}">${todo.desc}</span>
+      <button click.trigger="removeTodo(todo)">Remove</button>
+    </li>
+  </ul>
 </template>
